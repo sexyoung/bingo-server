@@ -1,4 +1,4 @@
-import { genWinStr, randMatrix } from 'utils';
+import { genWinStr, randMatrix } from "domain/utils";
 import { RoomDepartment, UserDepartment } from '.';
 
 export class Game {

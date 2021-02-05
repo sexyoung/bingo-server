@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { Room } from "./";
-import { readFile, writeFile, isExistFile } from "domain/utils";
+import { readFile, writeFile, isExistFile } from "utils";
 
 let instance = null;
 
@@ -35,7 +35,7 @@ class RoomDepartmentSingleton {
   }
 
   loadAll() {
-    const roomList = fs.readdirSync('./server/data/room');
+    const roomList = fs.readdirSync('./data/room');
     this.data = roomList.reduce((obj, file) => ({
       ...obj,
       [file.slice(0, -5)]: new Room(readFile('room', file.slice(0, -5)))

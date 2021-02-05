@@ -1,9 +1,13 @@
 import fs from 'fs';
 
-export const readFile = file => {
-  return JSON.parse(fs.readFileSync(`./server/data/${file}.json`));
+export const isExistFile = (type, file) => {
+  return fs.existsSync(`./data/${type}/${file}.json`);
 };
 
-export const writeFile = (file, content) => {
-  fs.writeFileSync(`./server/data/${file}.json`, JSON.stringify(content, null, 2));
+export const readFile = (type, file) => {
+  return JSON.parse(fs.readFileSync(`./data/${type}/${file}.json`));
+};
+
+export const writeFile = (type, file, content) => {
+  fs.writeFileSync(`./data/${type}/${file}.json`, JSON.stringify(content, null, 2));
 };

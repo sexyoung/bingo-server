@@ -6,7 +6,8 @@ import express from 'express';
 import socketIO from 'socket.io';
 
 import { Room } from "class";
-import { getRandomChar, isExistFile, writeFile  } from "domain/utils";
+import { getRandomChar } from "domain/utils";
+import { isExistFile, writeFile } from "utils";
 
 import {
   RoomHandler,

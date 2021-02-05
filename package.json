@@ -24,7 +24,6 @@
     "data": "data",
     "class": "class",
     "domain": "domain",
-    "utils": "domain/utils",
-    "const": "domain/const"
+    "utils": "utils"
   }
 }

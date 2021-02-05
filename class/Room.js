@@ -1,5 +1,5 @@
 import { Game } from "./Game";
-import { randMatrix } from 'utils';
+import { randMatrix } from "domain/utils";
 import { UserDepartment } from "./";
 
 export class Room {

@@ -14,7 +14,7 @@ export const RoomHandler = ({ io, socket }) => {
   socket.on(SocketEvent.Room.PlayerJoin, (roomID, userID) => {
     // 先檢查這個 id 是否有存在room，有的話就不新增
     RoomDepartment.load(roomID);
-    const room = RoomDepartment.room(roomID) ?? RoomDepartment.new(new Room({ name: roomName}));
+    const room = RoomDepartment.room(roomID) ?? RoomDepartment.new(new Room({ name: roomID}));
 
     /** 如果使用者在該房間的話就不允許同id的使用者進來 */
     // if(room.existsUser(userID)) {

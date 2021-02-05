@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { User } from "./";
-import { readFile, writeFile, isExistFile } from "domain/utils";
+import { readFile, writeFile, isExistFile } from "utils";
 
 let instance = null;
 
@@ -37,7 +37,7 @@ class UserDepartmentSingleton {
   }
 
   loadAll() {
-    const userList = fs.readdirSync('./server/data/user');
+    const userList = fs.readdirSync('./data/user');
     this.data = userList.reduce((obj, file) => ({
       ...obj,
       [file.slice(0, -5)]: new User(readFile('user', file.slice(0, -5)))
