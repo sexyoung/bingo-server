@@ -1,0 +1,30 @@
+{
+  "name": "bingo-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sexyoung/bingo-server.git",
+  "author": "寫詩羊 <Habuche@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node index"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "socket.io": "^3.1.1"
+  },
+  "_moduleAliases": {
+    "data": "data",
+    "class": "class",
+    "domain": "domain",
+    "utils": "domain/utils",
+    "const": "domain/const"
+  }
+}
