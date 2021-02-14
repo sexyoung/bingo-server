@@ -44,13 +44,13 @@ export const GameHandler = ({ io, socket }) => {
   const socketID = socket.id;
 
   /** 取得game資訊 */
-  socket.on(SocketEvent.Game.InfoReq, roomID => {
+  socket.on(SocketEvent.Game.ReqGame, roomID => {
     const room = RoomDepartment.load(roomID);
     /** 取得 user 資料 */
     // 如果此時沒有獲得全部的使用者資訊就會錯誤
     UserDepartment.loadAll();
     const user = UserDepartment.find(socketID);
-    io.to(socketID).emit(SocketEvent.User.InfoRes, user);
+    io.to(socketID).emit(SocketEvent.User.ResUser, user);
 
     /** turn */
     // const turnID = room.user[game.turnIndex];
@@ -71,10 +71,13 @@ export const GameHandler = ({ io, socket }) => {
 
     room.user.forEach(UserDepartment.load.bind(UserDepartment));
 
-    io.in(roomID).emit(
-      SocketEvent.Game.Turn,
-      ...getGameInfo(room),
-    );
+    // setTimeout(() => {
+      io.in(roomID).emit(
+        SocketEvent.Game.Turn,
+        ...getGameInfo(room),
+      );
+    // }, 1500);
+
   });
 
   socket.on(SocketEvent.Game.RePlay, roomID => {

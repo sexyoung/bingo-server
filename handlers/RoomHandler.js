@@ -37,7 +37,7 @@ export const RoomHandler = ({ io, socket }) => {
     socket.join(roomID);
 
     // console.warn('有人加入');
-    io.to(socketID).emit(SocketEvent.User.InfoRes, user);
+    io.to(socketID).emit(SocketEvent.User.ResUser, user);
 
     /** TODO: 應該可以用 io.in 取代 */
     const sockets = [...io.sockets.adapter.rooms.get(roomID)];
@@ -47,10 +47,10 @@ export const RoomHandler = ({ io, socket }) => {
   });
 
   /** 取得房間資訊 */
-  socket.on(SocketEvent.Room.InfoReq, roomID => {
+  socket.on(SocketEvent.Room.ReqRoom, roomID => {
     RoomDepartment.load(roomID);
     io.to(roomID).emit(
-      SocketEvent.Room.InfoRes,
+      SocketEvent.Room.ResRoom,
       RoomDepartment.data[roomID],
     );
   });
@@ -73,7 +73,7 @@ export const RoomHandler = ({ io, socket }) => {
     UserDepartment.user(user.id).percentage = percentage;
     UserDepartment.save(user.id);
 
-    io.to(socketID).emit(SocketEvent.User.InfoRes,
+    io.to(socketID).emit(SocketEvent.User.ResUser,
       UserDepartment.user(user.id),
     );
 
